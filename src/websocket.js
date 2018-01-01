@@ -62,6 +62,10 @@ const candles = (payload, interval, cb) => {
     w.on('message', msg => {
       const { e: eventType, E: eventTime, s: symbol, k: tick } = JSON.parse(msg)
       const {
+        t: startTime,
+        T: closeTime,
+        f: firstTrade,
+        L: lastTrade,
         o: open,
         h: high,
         l: low,
@@ -76,6 +80,10 @@ const candles = (payload, interval, cb) => {
       } = tick
 
       cb({
+        startTime,
+        closeTime,
+        firstTrade,
+        lastTrade,
         eventType,
         eventTime,
         symbol,
